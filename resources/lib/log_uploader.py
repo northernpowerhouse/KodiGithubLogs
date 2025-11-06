@@ -7,10 +7,11 @@ from __future__ import annotations
 import os
 import re
 import xbmc
+import xbmcvfs
 
 
 def _translate(path: str) -> str:
-    return xbmc.translatePath(path)
+    return xbmcvfs.translatePath(path)
 
 
 def read_logs(include_old: bool = True) -> str:
