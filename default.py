@@ -56,7 +56,8 @@ def authorize(client: str) -> str:
 
     # tell user to visit verification URL
     dlg = xbmcgui.Dialog()
-    dlg.ok('Authorize Kodi Log Uploader', 'Open: %s' % ver_uri, 'Code: %s' % user_code)
+    message = 'Go to: %s\n\nEnter code: %s' % (ver_uri, user_code)
+    dlg.ok('Authorize GitHub', message)
 
     try:
         token = gh.poll_for_token(client, device_code, interval, expires)
@@ -81,14 +82,25 @@ def choose_repo(token: str):
     if not labels:
         show_message('No writable repos', 'No repositories with push access found for this user.')
         return None
-    sel = xbmcgui.Dialog().select('Choose repository', labels)
+    
+    # Pre-select last used repo
+    last_repo = ADDON.getSetting('last_repo')
+    preselect = -1
+    if last_repo:
+        for i, label in enumerate(labels):
+            if label == last_repo:
+                preselect = i
+                break
+    
+    sel = xbmcgui.Dialog().select('Choose repository', labels, preselect=preselect)
     if sel < 0:
         return None
     repo = repos[sel]
+    
+    # Save last used repo
+    _set_setting('last_repo', repo.get('full_name'))
     _set_setting('selected_repo', repo.get('name'))
     _set_setting('selected_repo_owner', repo.get('owner', {}).get('login', ''))
-    # default folder = root
-    _set_setting('selected_folder', '')
     return repo
 
 
@@ -108,6 +120,7 @@ def choose_folder(token: str, owner: str, repo: str):
             return None
         choice = items[sel]
         if sel == 0:
+            _set_setting('last_folder', path)
             _set_setting('selected_folder', path)
             return path
         # create new folder

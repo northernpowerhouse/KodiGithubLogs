@@ -1,16 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<settings>
-  <category label="General">
-    <setting id="client_id" type="text" label="GitHub OAuth Client ID" default="" />
-    <setting id="access_token" type="password" label="GitHub Access Token (stored)" default="" advanced="true" />
-    <setting id="log_level" type="choice" label="Log level to upload" default="regular">
-      <choices>
-        <choice>regular</choice>
-        <choice>debug</choice>
-        <choice>trace</choice>
-      </choices>
-    </setting>
-    <setting id="include_old_logs" type="bool" label="Include older rotated logs (kodi.old)" default="true" />
-    <setting id="exclude_startup_logs" type="bool" label="Exclude startup logs (trim beginning)" default="false" />
+<settings version="2">
+  <category id="general" label="General">
+    <group id="1">
+      <setting id="client_id" type="string" label="GitHub OAuth Client ID" help="Leave empty to use default">
+        <level>1</level>
+        <default></default>
+      </setting>
+      <setting id="access_token" type="string" label="GitHub Access Token" enable="false">
+        <level>2</level>
+        <default></default>
+      </setting>
+      <setting id="last_repo" type="string" label="Last Repository" enable="false">
+        <level>3</level>
+        <default></default>
+      </setting>
+      <setting id="last_folder" type="string" label="Last Folder" enable="false">
+        <level>3</level>
+        <default></default>
+      </setting>
+    </group>
+  </category>
+  <category id="upload" label="Upload Options">
+    <group id="2">
+      <setting id="log_level" type="string" label="Log level to upload">
+        <level>0</level>
+        <default>regular</default>
+        <constraints>
+          <options>
+            <option label="Regular (no DEBUG/TRACE)">regular</option>
+            <option label="Debug (no TRACE)">debug</option>
+            <option label="Trace (all logs)">trace</option>
+          </options>
+        </constraints>
+        <control type="spinner" format="string"/>
+      </setting>
+      <setting id="include_old_logs" type="boolean" label="Include older rotated logs (kodi.old)">
+        <level>0</level>
+        <default>true</default>
+        <control type="toggle"/>
+      </setting>
+      <setting id="exclude_startup_logs" type="boolean" label="Exclude startup logs">
+        <level>0</level>
+        <default>false</default>
+        <control type="toggle"/>
+      </setting>
+    </group>
   </category>
 </settings>
