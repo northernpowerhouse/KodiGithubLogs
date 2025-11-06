@@ -25,6 +25,10 @@ def _get_setting(key: str) -> str:
     return ADDON.getSetting(key) or ''
 
 
+def _get_setting_bool(key: str) -> bool:
+    return ADDON.getSetting(key) == 'true'
+
+
 def _set_setting(key: str, value: str) -> None:
     ADDON.setSetting(key, value)
 
@@ -146,29 +150,39 @@ def choose_folder(token: str, owner: str, repo: str):
 
 
 def upload_now():
-    token = _get_setting('access_token')
-    if not token:
-        show_message('Not authorized', 'Please authorize with GitHub first (use Authorize).')
-        return
-    owner = _get_setting('selected_repo_owner')
-    repo = _get_setting('selected_repo')
-    folder = _get_setting('selected_folder')
-    if not owner or not repo:
-        show_message('Repository not selected', 'Please select a repository first.')
-        return
-    level = _get_setting('log_level') or 'regular'
-    include_old = ADDON.getSettingBool('include_old_logs')
-    exclude_startup = ADDON.getSettingBool('exclude_startup_logs')
-    payload = log_uploader.build_log_payload(level=level, include_old=include_old, exclude_startup=exclude_startup)
-    now = datetime.datetime.utcnow().strftime('%Y%m%d%H%M')
-    filename = 'kodilog%s.txt' % now
-    path = filename if not folder else '%s/%s' % (folder.strip('/'), filename)
-    gh = GitHubClient(ADDON)
     try:
+        token = _get_setting('access_token')
+        if not token:
+            show_message('Not authorized', 'Please authorize with GitHub first (use Authorize).')
+            return
+        owner = _get_setting('selected_repo_owner')
+        repo = _get_setting('selected_repo')
+        folder = _get_setting('selected_folder')
+        if not owner or not repo:
+            show_message('Repository not selected', 'Please select a repository first.')
+            return
+        level = _get_setting('log_level') or 'regular'
+        include_old = _get_setting_bool('include_old_logs')
+        exclude_startup = _get_setting_bool('exclude_startup_logs')
+        
+        xbmc.log('KodiGithubLogs: Building log payload (level=%s, include_old=%s, exclude_startup=%s)' % (level, include_old, exclude_startup), xbmc.LOGINFO)
+        payload = log_uploader.build_log_payload(level=level, include_old=include_old, exclude_startup=exclude_startup)
+        
+        now = datetime.datetime.utcnow().strftime('%Y%m%d%H%M')
+        filename = 'kodilog%s.txt' % now
+        path = filename if not folder else '%s/%s' % (folder.strip('/'), filename)
+        
+        xbmc.log('KodiGithubLogs: Uploading to %s/%s/%s' % (owner, repo, path), xbmc.LOGINFO)
+        gh = GitHubClient(ADDON)
         message = 'Upload Kodi log %s' % filename
         gh.upload_file(token, owner, repo, path, payload, message)
+        
+        xbmc.log('KodiGithubLogs: Upload successful', xbmc.LOGINFO)
         show_message('Upload complete', 'Log uploaded to %s/%s' % (repo, path))
     except Exception as e:
+        xbmc.log('KodiGithubLogs: Upload error: %s' % str(e), xbmc.LOGERROR)
+        import traceback
+        xbmc.log('KodiGithubLogs: %s' % traceback.format_exc(), xbmc.LOGERROR)
         show_message('Upload failed', str(e))
 
 
