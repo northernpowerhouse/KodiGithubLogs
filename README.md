@@ -1,4 +1,4 @@
-# Kodi Log Uploader (Kodi 21)
+# KodiGithubLogs (Kodi 21)
 
 This is a Kodi addon (script) that reads Kodi logs and uploads them to a GitHub repository using the GitHub OAuth Device Authorization flow.
 
@@ -18,16 +18,16 @@ This is a Kodi addon (script) that reads Kodi logs and uploads them to a GitHub 
 
 ### Option 1: Install via Repository (Recommended)
 
-1. Download the latest `repository.kodiloguploader.zip` from [Releases](https://github.com/northernpowerhouse/KodiGithubLogs/releases)
+1. Download the latest `repository.kodigithublogs.zip` from [Releases](https://github.com/northernpowerhouse/KodiGithubLogs/releases)
 2. In Kodi: **Add-ons → Install from zip file** → Select the repository zip
 3. Wait for the installation notification
-4. Go to **Add-ons → Install from repository → Kodi Log Uploader Repository**
-5. Select **Program add-ons → Kodi Log Uploader**
+4. Go to **Add-ons → Install from repository → KodiGithubLogs Repository**
+5. Select **Program add-ons → KodiGithubLogs**
 6. Click **Install**
 
 ### Option 2: Direct Installation
 
-1. Download the latest `script.kodiloguploader-X.X.X.zip` from [Releases](https://github.com/northernpowerhouse/KodiGithubLogs/releases)
+1. Download the latest `script.kodigithublogs-X.X.X.zip` from [Releases](https://github.com/northernpowerhouse/KodiGithubLogs/releases)
 2. In Kodi: **Add-ons → Install from zip file** → Select the addon zip
 
 ## Setup & Usage
@@ -101,8 +101,8 @@ Use the provided build script:
 ```
 
 This will:
-- Create `build/script.kodiloguploader-X.X.X.zip`
-- Create `build/repository.kodiloguploader.zip`
+- Create `build/script.kodigithublogs-X.X.X.zip`
+- Create `build/repository.kodigithublogs.zip`
 - Update `repo/addons.xml` and `repo/addons.xml.md5`
 
 ### Creating a Release

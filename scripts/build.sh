@@ -9,8 +9,8 @@ echo "Building version $VERSION"
 
 # Clean build directory
 rm -rf build
-mkdir -p build/script.kodiloguploader
-mkdir -p repo/script.kodiloguploader
+mkdir -p build/script.kodigithublogs
+mkdir -p repo/script.kodigithublogs
 
 # Copy addon files
 rsync -av \
@@ -18,19 +18,19 @@ rsync -av \
   --exclude='.github' \
   --exclude='repo' \
   --exclude='build' \
-  --exclude='repository.kodiloguploader' \
+  --exclude='repository.kodigithublogs' \
   --exclude='*.pyc' \
   --exclude='__pycache__' \
   --exclude='scripts' \
-  . build/script.kodiloguploader/
+  . build/script.kodigithublogs/
 
 # Create addon zip
 cd build
-zip -r "script.kodiloguploader-${VERSION}.zip" script.kodiloguploader
+zip -r "script.kodigithublogs-${VERSION}.zip" script.kodigithublogs
 cd ..
 
 # Copy to repo
-cp "build/script.kodiloguploader-${VERSION}.zip" repo/script.kodiloguploader/
+cp "build/script.kodigithublogs-${VERSION}.zip" repo/script.kodigithublogs/
 
 # Update addons.xml
 cat > repo/addons.xml << 'EOF'
@@ -47,18 +47,16 @@ EOF
 # Generate MD5
 md5sum repo/addons.xml | awk '{print $1}' > repo/addons.xml.md5
 
-# Create repository zip
-cd repository.kodiloguploader
-zip -r ../build/repository.kodiloguploader.zip .
-cd ..
+# Create repository zip (from parent directory to include folder structure)
+zip -r build/repository.kodigithublogs.zip repository.kodigithublogs
 
 echo ""
 echo "Build complete!"
-echo "Addon zip: build/script.kodiloguploader-${VERSION}.zip"
-echo "Repository zip: build/repository.kodiloguploader.zip"
+echo "Addon zip: build/script.kodigithublogs-${VERSION}.zip"
+echo "Repository zip: build/repository.kodigithublogs.zip"
 echo ""
 echo "To create a release, commit changes and push with tag:"
 echo "  git add repo/"
-echo "  git commit -m 'Release v${VERSION}'"
-echo "  git tag v${VERSION}"
+echo "  git commit -m 'Release ${VERSION}'"
+echo "  git tag ${VERSION}"
 echo "  git push origin main --tags"

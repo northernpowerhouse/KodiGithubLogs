@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="repository.kodiloguploader" version="1.0.0" name="Kodi Log Uploader Repository" provider-name="northernpowerhouse">
+<addon id="repository.kodigithublogs" version="1.0.0" name="KodiGithubLogs Repository" provider-name="northernpowerhouse">
     <requires>
         <import addon="xbmc.addon" version="12.0.0"/>
     </requires>
-    <extension point="xbmc.addon.repository" name="Kodi Log Uploader Repository">
+    <extension point="xbmc.addon.repository" name="KodiGithubLogs Repository">
         <dir>
             <info compressed="false">https://raw.githubusercontent.com/northernpowerhouse/KodiGithubLogs/main/repo/addons.xml</info>
             <checksum>https://raw.githubusercontent.com/northernpowerhouse/KodiGithubLogs/main/repo/addons.xml.md5</checksum>
@@ -11,8 +11,8 @@
         </dir>
     </extension>
     <extension point="xbmc.addon.metadata">
-        <summary lang="en">Kodi Log Uploader Repository</summary>
-        <description lang="en">Repository for Kodi Log Uploader addon - upload your Kodi logs to GitHub</description>
+        <summary lang="en">KodiGithubLogs Repository</summary>
+        <description lang="en">Repository for KodiGithubLogs addon - upload your Kodi logs to GitHub</description>
         <platform>all</platform>
         <license>MIT</license>
         <source>https://github.com/northernpowerhouse/KodiGithubLogs</source>

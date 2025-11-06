@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Main script for the Kodi Log Uploader addon.
+Main script for the KodiGithubLogs addon.
 
 Provides a simple UI: authorize with GitHub (device flow), choose a repo/folder,
 and upload selected logs.

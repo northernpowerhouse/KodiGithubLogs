@@ -3,14 +3,14 @@
 ## Installation (3 minutes)
 
 ### Step 1: Install the Repository
-1. Download [repository.kodiloguploader.zip](https://github.com/northernpowerhouse/KodiGithubLogs/releases/latest)
+1. Download [repository.kodigithublogs.zip](https://github.com/northernpowerhouse/KodiGithubLogs/releases/latest)
 2. In Kodi: **Add-ons** → **Install from zip file** → Select the zip
 3. Wait for "Repository installed" notification
 
 ### Step 2: Install the Addon
 1. **Add-ons** → **Install from repository**
-2. **Kodi Log Uploader Repository**
-3. **Program add-ons** → **Kodi Log Uploader**
+2. **KodiGithubLogs Repository**
+3. **Program add-ons** → **KodiGithubLogs**
 4. Click **Install**
 
 ## First Use (5 minutes)

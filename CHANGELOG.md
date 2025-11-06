@@ -1,9 +1,19 @@
 # Changelog
 
-All notable changes to the Kodi Log Uploader addon will be documented in this file.
+All notable changes to the KodiGithubLogs addon will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [0.2.0] - 2025-11-06
+
+### Changed
+- **Renamed addon** from "Kodi Log Uploader" to "KodiGithubLogs" to avoid confusion with official Kodi addons
+- Updated addon ID from `script.kodiloguploader` to `script.kodigithublogs`
+- Updated repository addon ID from `repository.kodiloguploader` to `repository.kodigithublogs`
+
+### Fixed
+- **Repository installation error** - Fixed zip structure to properly include folder (was causing "itemsize: 2, first item is folder: false" error)
 
 ## [0.1.0] - 2025-11-06
 
