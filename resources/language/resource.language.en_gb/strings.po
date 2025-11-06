@@ -1,0 +1,68 @@
+# Kodi Media Center language file
+# Addon Name: KodiGithubLogs
+# Addon id: script.kodigithublogs
+# Addon Provider: northernpowerhouse
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: en_GB\n"
+
+msgctxt "#30100"
+msgid "General"
+msgstr ""
+
+msgctxt "#30101"
+msgid "Authentication"
+msgstr ""
+
+msgctxt "#30102"
+msgid "GitHub OAuth Client ID"
+msgstr ""
+
+msgctxt "#30103"
+msgid "Leave empty to use default built-in client ID"
+msgstr ""
+
+msgctxt "#30104"
+msgid "Access Token (stored)"
+msgstr ""
+
+msgctxt "#30105"
+msgid "Last Repository"
+msgstr ""
+
+msgctxt "#30106"
+msgid "Last Folder"
+msgstr ""
+
+msgctxt "#30200"
+msgid "Upload Options"
+msgstr ""
+
+msgctxt "#30201"
+msgid "Log Settings"
+msgstr ""
+
+msgctxt "#30202"
+msgid "Log level to upload"
+msgstr ""
+
+msgctxt "#30203"
+msgid "Include older rotated logs (kodi.old)"
+msgstr ""
+
+msgctxt "#30204"
+msgid "Exclude startup logs"
+msgstr ""
+
+msgctxt "#30210"
+msgid "Regular (no DEBUG/TRACE)"
+msgstr ""
+
+msgctxt "#30211"
+msgid "Debug (no TRACE)"
+msgstr ""
+
+msgctxt "#30212"
+msgid "Trace (all logs)"
+msgstr ""

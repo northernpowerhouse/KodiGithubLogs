@@ -22,18 +22,24 @@ def read_logs(include_old: bool = True) -> str:
     for p in log_paths:
         try:
             fp = _translate(p)
+            xbmc.log('KodiGithubLogs: Checking log path: %s -> %s' % (p, fp), xbmc.LOGINFO)
             if not os.path.exists(fp):
+                xbmc.log('KodiGithubLogs: Log file does not exist: %s' % fp, xbmc.LOGWARNING)
                 continue
             with open(fp, 'rb') as f:
                 raw = f.read()
+                xbmc.log('KodiGithubLogs: Read %d bytes from %s' % (len(raw), fp), xbmc.LOGINFO)
                 try:
                     txt = raw.decode('utf-8')
                 except Exception:
                     txt = raw.decode('latin-1', errors='ignore')
                 parts.append(txt)
-        except Exception:
+        except Exception as e:
+            xbmc.log('KodiGithubLogs: Error reading log %s: %s' % (p, str(e)), xbmc.LOGERROR)
             continue
-    return "\n----\n".join(parts)
+    result = "\n----\n".join(parts)
+    xbmc.log('KodiGithubLogs: Total log text length: %d' % len(result), xbmc.LOGINFO)
+    return result
 
 
 def filter_by_level(text: str, level: str = 'regular') -> str:
