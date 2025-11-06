@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <category label="General">
+    <setting id="client_id" type="text" label="GitHub OAuth Client ID" default="" />
+    <setting id="access_token" type="password" label="GitHub Access Token (stored)" default="" advanced="true" />
+    <setting id="log_level" type="choice" label="Log level to upload" default="regular">
+      <choices>
+        <choice>regular</choice>
+        <choice>debug</choice>
+        <choice>trace</choice>
+      </choices>
+    </setting>
+    <setting id="include_old_logs" type="bool" label="Include older rotated logs (kodi.old)" default="true" />
+    <setting id="exclude_startup_logs" type="bool" label="Exclude startup logs (trim beginning)" default="false" />
+  </category>
+</settings>

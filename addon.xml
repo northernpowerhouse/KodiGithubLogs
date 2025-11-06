@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="script.kodiloguploader" version="0.1.0" name="Kodi Log Uploader" provider-name="northernpowerhouse">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+  </requires>
+  <extension point="xbmc.python.script" library="default.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Upload Kodi logs to GitHub</summary>
+    <description lang="en">Upload Kodi logs to GitHub using device authorization. Supports log level selection (regular/debug/trace) and filtering options.</description>
+    <platform>all</platform>
+    <license>MIT</license>
+    <source>https://github.com/northernpowerhouse/KodiGithubLogs</source>
+    <news>v0.1.0 - Initial release with GitHub device flow authentication and log upload</news>
+  </extension>
+</addon>
