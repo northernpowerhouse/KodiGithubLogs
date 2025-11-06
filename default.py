@@ -70,7 +70,11 @@ def authorize(client: str) -> str:
         return ''
 
     # store token
+    xbmc.log('KodiGithubLogs: Saving token (length=%d)' % len(token), xbmc.LOGINFO)
     _set_setting('access_token', token)
+    # Verify it was saved
+    saved = _get_setting('access_token')
+    xbmc.log('KodiGithubLogs: Token saved, retrieved length=%d' % len(saved), xbmc.LOGINFO)
     show_message('Authorized', 'GitHub authorization completed and token saved.')
     return token
 
@@ -206,6 +210,7 @@ def main_menu():
             authorize(client)
         elif sel == 1:
             token = _get_setting('access_token')
+            xbmc.log('KodiGithubLogs: Retrieved token for repo selection (length=%d)' % len(token), xbmc.LOGINFO)
             if not token:
                 show_message('Not authorized', 'Authorize first')
                 continue
