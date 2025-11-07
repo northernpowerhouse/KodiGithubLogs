@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?><?xml version="1.0" encoding="utf-8"?>
 
-<settings><settings version="2">
+<settings><settings>
 
-  <setting id="client_id" type="text" label="Client ID" default="" />  <category id="general" label="30100">
+  <setting id="client_id" type="text" label="Client ID" default="" />  <setting id="client_id" type="text" label="Client ID" default="" />
 
-  <setting id="access_token" type="text" label="Token" default="" visible="false" />    <group id="1" label="30101">
+  <setting id="access_token" type="text" label="Token" default="" visible="false" />  <setting id="access_token" type="text" label="Token" default="" visible="false" />
 
-  <setting id="last_repo" type="text" label="Last Repo" default="" visible="false" />      <setting id="client_id" type="string" label="30102" help="30103">
+  <setting id="last_repo" type="text" label="Last Repo" default="" visible="false" />  <setting id="last_repo" type="text" label="Last Repo" default="" visible="false" />
 
-  <setting id="last_folder" type="text" label="Last Folder" default="" visible="false" />        <level>1</level>
+  <setting id="last_folder" type="text" label="Last Folder" default="" visible="false" />  <setting id="last_folder" type="text" label="Last Folder" default="" visible="false" />
 
-  <setting id="selected_repo" type="text" label="Repo" default="" visible="false" />        <default></default>
+  <setting id="selected_repo" type="text" label="Repo" default="" visible="false" />
 
-  <setting id="selected_repo_owner" type="text" label="Owner" default="" visible="false" />        <control type="edit" format="string"/>
+  <setting id="selected_repo_owner" type="text" label="Owner" default="" visible="false" />  <setting id="selected_repo" type="text" label="Repo" default="" visible="false" />        <default></default>
 
-  <setting id="selected_folder" type="text" label="Folder" default="" visible="false" />      </setting>
+  <setting id="selected_folder" type="text" label="Folder" default="" visible="false" />
+
+  <setting id="log_level" type="select" label="Log Level" values="regular|debug|trace" default="regular" />  <setting id="selected_repo_owner" type="text" label="Owner" default="" visible="false" />        <control type="edit" format="string"/>
+
+  <setting id="include_old_logs" type="bool" label="Include old logs" default="true" />
+
+  <setting id="exclude_startup_logs" type="bool" label="Exclude startup" default="false" />  <setting id="selected_folder" type="text" label="Folder" default="" visible="false" />      </setting>
+
+</settings>
 
   <setting id="log_level" type="select" label="Log Level" values="regular|debug|trace" default="regular" />      <setting id="access_token" type="string" label="30104" enable="false" visible="false">
 
